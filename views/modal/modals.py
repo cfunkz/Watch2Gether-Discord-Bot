@@ -6,7 +6,7 @@ import aiosqlite
 import re
 from config import DB_FILE, W2G_API_KEY, MAX_USER_ROOM
 from urllib.parse import urlparse
-
+from utils.logger import logger  
 
 class WatchAddModal(Modal, title="Add Existing Watch2Gether Room"):
     room_url = TextInput(
@@ -41,6 +41,7 @@ class WatchAddModal(Modal, title="Add Existing Watch2Gether Room"):
         # Extract streamkey from URL
         streamkey = match.group(2) or match.group(3)
         if not streamkey:
+            logger.error("Failed to extract streamkey from URL.")
             await interaction.response.send_message("Could not extract stream key from URL.", ephemeral=True)
             return
 
@@ -49,10 +50,12 @@ class WatchAddModal(Modal, title="Add Existing Watch2Gether Room"):
             async with aiohttp.ClientSession() as session:
                 async with session.get(url, allow_redirects=True) as resp:
                     if resp.status != 200:
-                        await interaction.response.send_message("Room URL is not accessible (status {}).".format(resp.status), ephemeral=True)
+                        logger.error(f"Failed to verify room URL: {resp.status} {await resp.text()}")
+                        await interaction.response.send_message("Room URL is not accessible.".format(resp.status), ephemeral=True)
                         return
         except aiohttp.ClientError:
-            await interaction.response.send_message("Failed to verify room URL due to network error.", ephemeral=True)
+            logger.exception("Failed to verify room URL due to network error.")
+            await interaction.response.send_message("Failed to verify room URL", ephemeral=True)
             return
 
         # DB checks & insert
@@ -163,12 +166,14 @@ class WatchCreateModal(Modal, title="Create Watch2Gether Room"):
             try:
                 async with session.post("https://api.w2g.tv/rooms/create.json", json=payload, headers=headers) as resp:
                     if resp.status != 200:
+                        logger.error(f"Failed to create room: {resp.status} {await resp.text()}")
                         await interaction.response.send_message(
                             "Failed to create room (external API error).", ephemeral=True
                         )
                         return
                     data = await resp.json()
             except aiohttp.ClientError:
+                logger.exception("Failed to contact Watch2Gether API")
                 await interaction.response.send_message(
                     "Failed to contact Watch2Gether API.", ephemeral=True
                 )
@@ -176,7 +181,8 @@ class WatchCreateModal(Modal, title="Create Watch2Gether Room"):
 
         streamkey = data.get("streamkey")
         if not streamkey:
-            await interaction.response.send_message("Failed to create room (no streamkey).", ephemeral=True)
+            logger.error("Watch2Gether API did not return a streamkey.")
+            await interaction.response.send_message("Failed to create room..", ephemeral=True)
             return
 
         room_url = f"https://w2g.tv/rooms/{streamkey}"
@@ -256,4 +262,5 @@ class AddUrlModal(Modal, title="Add URL to Watch2Gether Room"):
                         text = await resp.text()
                         await interaction.response.send_message(f"API error: {resp.status} {text}", ephemeral=True)
             except Exception as e:
-                await interaction.response.send_message(f"Failed to contact Watch2Gether API: {e}", ephemeral=True)
+                logger.exception(f"Failed to contact Watch2Gether API: {e}")
+                await interaction.response.send_message(f"Failed to contact Watch2Gether API", ephemeral=True)
