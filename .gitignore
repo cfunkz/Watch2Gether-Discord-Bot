@@ -21,7 +21,7 @@ Thumbs.db
 *.db
 
 # Configs / API keys
-#config.py
+config.py
 *.env
 
 # Logs

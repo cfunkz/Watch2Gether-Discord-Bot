@@ -1,11 +1,12 @@
-# config.py
-W2G_API_KEY = ""
-BOT_TOKEN = ""
-DB_FILE = "user_rooms.db" # Database file path
-GUILD_ID = 1072470503425593424  # Your server ID
-ROLE_ID = 1098687991658065940   # Admin Role ID that should have access
-MAX_LOG_SIZE = 33554432  # Maximum LOG SIZE in bytes (32 MB)
-ROTATE_LOGS = 5  # HOW MANY LOGS TO ROTATE
-LOG_FILE = 'discord.log'
-DEFAULT_AVATAR = "https://i.ibb.co/TMnHDzL2/watchparty.png"  # Default avatar URL
-MAX_USER_ROOM = 10
+import os
+
+W2G_API_KEY = os.getenv("W2G_API_KEY")
+BOT_TOKEN = os.getenv("BOT_TOKEN")
+DB_FILE = os.getenv("DB_FILE", "user_rooms.db")
+GUILD_ID = int(os.getenv("GUILD_ID", "0"))
+ROLE_ID = int(os.getenv("ROLE_ID", "0"))
+MAX_LOG_SIZE = int(os.getenv("MAX_LOG_SIZE", "33554432"))
+ROTATE_LOGS = int(os.getenv("ROTATE_LOGS", "5"))
+LOG_FILE = os.getenv("LOG_FILE", "discord.log")
+DEFAULT_AVATAR = os.getenv("DEFAULT_AVATAR", "https://i.ibb.co/TMnHDzL2/watchparty.png")
+MAX_USER_ROOM = int(os.getenv("MAX_USER_ROOM", "10"))
