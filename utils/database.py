@@ -1,6 +1,8 @@
+from config import DB_FILE
+
 async def init_db():
     import aiosqlite
-    async with aiosqlite.connect("user_rooms.db") as db:
+    async with aiosqlite.connect(DB_FILE) as db:
         await db.execute("""
         CREATE TABLE IF NOT EXISTS rooms (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
