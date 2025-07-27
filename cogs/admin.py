@@ -1,4 +1,5 @@
 from config import DB_FILE, ROLE_ID, GUILD_ID
+from utils.logger import logger
 
 import os
 import time
@@ -26,6 +27,7 @@ class AdminView(View):
             return
         try:
             await interaction.response.send_message("📥 Sending database file...", ephemeral=True)
+            logger.info(f"Sending database file {DB_FILE} to {interaction.user.name} ({interaction.user.id})")
             await interaction.followup.send(file=File(DB_FILE), ephemeral=True)
         except Forbidden:
             await interaction.followup.send("I can't DM you. Enable DMs from server members.", ephemeral=True)
@@ -42,7 +44,7 @@ class AdminView(View):
             import sqlite3
 
             dump_path = f"{DB_FILE}.sql"
-
+            logger.info(f"Dumping database to {dump_path}.... Invoked by {interaction.user.name} ({interaction.user.id})")
             # Dump the database to SQL file
             with sqlite3.connect(DB_FILE) as conn:
                 with open(dump_path, "w", encoding="utf-8") as f:
@@ -54,6 +56,7 @@ class AdminView(View):
 
             os.remove(dump_path)  # Clean up after sending
         except Exception as e:
+            logger.exception(f"Failed to dump database: {e}")
             await interaction.followup.send(f"Failed to dump SQL:\n```{e}```", ephemeral=True)
 
 
@@ -73,8 +76,10 @@ class AdminView(View):
         try:
             for ext in list(self.bot.extensions):
                 await self.bot.reload_extension(ext)
+                logger.info(f"Reloaded extension: {ext}")
             await interaction.response.send_message("All cogs reloaded successfully.", ephemeral=True)
         except Exception as e:
+            logger.exception(f"Failed to reload cogs: {e}")
             await interaction.followup.send(f"Failed to reload cogs:\n```{e}```", ephemeral=True)
 
 
