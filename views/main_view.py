@@ -145,4 +145,4 @@ class WatchView(View):
 
         view = View()
         view.add_item(RoomSelect(options, mode))
-        await interaction.response.send_message(f"```Select a room for {mode.replace('_', ' ')}:```", view=view, ephemeral=True)
+        await interaction.response.send_message(f"```Select a room for adding {mode.replace('_', ' ')}:```", view=view, ephemeral=True)
