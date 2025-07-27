@@ -1,5 +1,23 @@
+<p align="center">
+  <img src="https://i.ibb.co/TMnHDzL2/watchparty.png" alt="Watch2Gether Bot Logo" width="120" />
+</p>
 
-# Watch2Gether Discord Bot Documentation
+<h1 align="center">Watch2Gether Discord Bot</h1>
+
+<p align="center">
+  <a href="https://github.com/cfunkz/Watch2Gether-Discord-Bot/stargazers">
+    <img src="https://img.shields.io/github/stars/cfunkz/Watch2Gether-Discord-Bot?style=social" alt="GitHub stars" />
+  </a>
+  <a href="https://github.com/cfunkz/Watch2Gether-Discord-Bot/network/members">
+    <img src="https://img.shields.io/github/forks/cfunkz/Watch2Gether-Discord-Bot?style=social" alt="GitHub forks" />
+  </a>
+  <a href="https://github.com/cfunkz/Watch2Gether-Discord-Bot/issues">
+    <img src="https://img.shields.io/github/issues/cfunkz/Watch2Gether-Discord-Bot" alt="GitHub issues" />
+  </a>
+  <a href="https://github.com/cfunkz/Watch2Gether-Discord-Bot/actions">
+    <img src="https://img.shields.io/github/workflow/status/cfunkz/Watch2Gether-Discord-Bot/CI" alt="Build Status" />
+  </a>
+</p>
 
 # Features
 - Create new temporary rooms via Watch2Gether.
@@ -47,6 +65,7 @@ MAX_LOG_SIZE = 33554432  # Maximum LOG SIZE in bytes (32 MB)
 ROTATE_LOGS = 5  # HOW MANY LOGS TO ROTATE
 LOG_FILE = 'discord.log'
 DEFAULT_AVATAR = "https://i.ibb.co/TMnHDzL2/watchparty.png"  # Default avatar URL
+MAX_USER_ROOM = 10
 ```
 
 Run the bot
@@ -94,4 +113,3 @@ Use the `/watch` command to manage Watch2Gether rooms.
     <td><img src="https://github.com/user-attachments/assets/b92ef5b0-6928-492d-b76f-65ee91d22fbb" alt="Logger" width="300"></td>
   </tr>
 </table>
-
