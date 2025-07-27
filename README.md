@@ -135,7 +135,7 @@ Built with ❤️ by [cfunkz](https://github.com/cfunkz) — learning the wizard
 If this project helped you, consider ⭐ starring the repo or [buying me a coffee](https://ko-fi.com/cfunkz)!
 
 <p align="center">
-  <a href="https://ko-fi.com/YOURNAME">
+  <a href="https://ko-fi.com/cfunkz">
     <img src="https://ko-fi.com/img/githubbutton_sm.svg" alt="ko-fi">
   </a>
 </p>
