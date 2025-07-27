@@ -41,7 +41,7 @@ class WatchView(View):
             rows = list(await cursor.fetchall())
 
         if not rows:
-            return await interaction.response.send_message("You have no active rooms.", ephemeral=True)
+            return await interaction.response.send_message("```You have no active rooms.```", ephemeral=True)
 
         embed = Embed(
             title=f"{interaction.user.name}'s Watch2Gether Rooms",
@@ -72,13 +72,13 @@ class WatchView(View):
             rows = await cursor.fetchall()
 
         if not rows:
-            return await interaction.response.send_message("You have no active rooms to share.", ephemeral=True)
+            return await interaction.response.send_message("```You have no active rooms to share.```", ephemeral=True)
 
         room_data = [{"id": r[0], "video_url": r[1], "room_url": r[2], "is_deleted": r[3]} for r in rows]
         view = View()
         view.add_item(ShareSelect(room_data, interaction.user))
         await interaction.response.send_message(
-            "📤 Pick a room to share with others:",
+            "```📤 Pick a room to share with others:```",
             view=view,
             ephemeral=True
         )
@@ -94,7 +94,7 @@ class WatchView(View):
             rows = await cursor.fetchall()
 
         if not rows:
-            return await interaction.response.send_message("You have no active rooms to delete.", ephemeral=True)
+            return await interaction.response.send_message("```You have no active rooms to delete.```", ephemeral=True)
 
         room_data = [{"id": r[0], "video_url": r[1]} for r in rows]
         view = View()
@@ -123,7 +123,7 @@ class WatchView(View):
             rooms = await cursor.fetchall()
 
         if not rooms:
-            return await interaction.response.send_message("You have no active rooms.", ephemeral=True)
+            return await interaction.response.send_message("```You have no active rooms.```", ephemeral=True)
 
         options = [
             SelectOption(
@@ -135,7 +135,7 @@ class WatchView(View):
 
         class RoomSelect(Select):
             def __init__(self, options, mode):
-                super().__init__(placeholder="Select a room", min_values=1, max_values=1, options=options)
+                super().__init__(placeholder="```Select a room```", min_values=1, max_values=1, options=options)
                 self.mode = mode
 
             async def callback(self, interaction: Interaction):
@@ -145,4 +145,4 @@ class WatchView(View):
 
         view = View()
         view.add_item(RoomSelect(options, mode))
-        await interaction.response.send_message(f"Select a room for {mode.replace('_', ' ')}:", view=view, ephemeral=True)
+        await interaction.response.send_message(f"```Select a room for {mode.replace('_', ' ')}:```", view=view, ephemeral=True)

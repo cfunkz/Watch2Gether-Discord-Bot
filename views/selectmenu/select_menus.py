@@ -34,7 +34,7 @@ class WatchSelect(Select):
             await db.commit()
 
         await interaction.response.send_message(
-            f"🗑️ Marked {len(room_ids)} room(s) as deleted.", ephemeral=True
+            f"```🗑️ Marked {len(room_ids)} room(s) as deleted.```", ephemeral=True
         )
 
 class ShareSelect(Select):

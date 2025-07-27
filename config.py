@@ -1,4 +1,7 @@
 import os
+from dotenv import load_dotenv
+# Load environment variables from .env file
+load_dotenv()
 
 W2G_API_KEY = os.getenv("W2G_API_KEY")
 BOT_TOKEN = os.getenv("BOT_TOKEN")
