@@ -105,11 +105,11 @@ class WatchView(View):
             ephemeral=True
         )
         
-    @button(label="Add To Playlist", style=ButtonStyle.secondary, custom_id="watch_add_to_playlist", emoji="➕")
+    @button(label="Playlist", style=ButtonStyle.secondary, custom_id="watch_add_to_playlist", emoji="➕")
     async def add_to_playlist_btn(self, interaction: Interaction, button: Button):
         await self.show_room_select(interaction, mode="playlist")
 
-    @button(label="Insta Play", style=ButtonStyle.secondary, custom_id="watch_insta_play", emoji="▶️")
+    @button(label="Play", style=ButtonStyle.secondary, custom_id="watch_insta_play", emoji="▶️")
     async def insta_play_btn(self, interaction: Interaction, button: Button):
         await self.show_room_select(interaction, mode="insta_play")
 
