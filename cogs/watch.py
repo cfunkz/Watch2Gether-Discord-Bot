@@ -32,7 +32,7 @@ class WatchCog(commands.Cog):
         embed.add_field(name="\u200b", value=ansi_block, inline=False)
         avatar = interaction.user.avatar.url if interaction.user.avatar else DEFAULT_AVATAR
         embed.set_thumbnail(url=avatar)
-        embed.set_footer(text="All actions are ephemeral, apart from shairing rooms.")
+        embed.set_footer(text="All actions are ephemeral, apart from sharing rooms.")
         view = WatchView(self.bot, interaction.user)
         
         await interaction.response.send_message(embed=embed, view=view, ephemeral=True)
