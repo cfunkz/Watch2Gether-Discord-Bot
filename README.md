@@ -19,6 +19,15 @@
   </a>
 </p>
 
+## 📚 Table of Contents
+
+- [Features](#features)
+- [Setup](#setup)
+- [Usage](#usage)
+  - [Admin Panel](#admin-panel)
+  - [Manage Rooms](#manage-rooms)
+- [Images](#images)
+
 # Features
 - Create new temporary rooms via Watch2Gether.
 - Link existing Watch2Gether rooms.
