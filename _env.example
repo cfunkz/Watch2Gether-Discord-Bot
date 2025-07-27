@@ -1,0 +1,10 @@
+W2G_API_KEY = w2gkey
+BOT_TOKEN = discord_token
+DB_FILE = user_rooms.db # Database file path
+GUILD_ID = 1231321123123123123  # Your server ID
+ROLE_ID = 1232132132131231231   # Admin Role ID that should have access
+MAX_LOG_SIZE = 33554432  # Maximum LOG SIZE in bytes (32 MB)
+ROTATE_LOGS = 5  # HOW MANY LOGS TO ROTATE
+LOG_FILE = 'discord.log'
+DEFAULT_AVATAR = "https://i.ibb.co/TMnHDzL2/watchparty.png"  # Default avatar URL
+MAX_USER_ROOM=10
