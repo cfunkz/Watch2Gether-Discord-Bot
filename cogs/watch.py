@@ -13,6 +13,10 @@ class WatchCog(commands.Cog):
     @app_commands.command(name="watch", description="Manage Watch2Gether rooms")
     @app_commands.checks.cooldown(1, 3, key=lambda i: i.user.id)
     async def watch(self, interaction: Interaction):
+        if interaction.guild is None:
+            return await interaction.response.send_message(
+                "This command can only be used in a server.", ephemeral=True
+            )
         description_text = (
             "Hey there!\n"
             "Ready to kick back and watch together?\n"

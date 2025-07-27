@@ -64,7 +64,8 @@ class AdminView(View):
         latency = round((time.time() - start_time) * 1000)
         ws_latency = round(self.bot.latency * 1000)
         await interaction.followup.send(
-            f"🏓 **Pong!**\nAPI Latency: `{latency}ms`\nWebsocket Latency: `{ws_latency}ms`", ephemeral=True
+            f"```ansi\n\u001b[1;36m🏓 Pong!\u001b[0m \u001b[1;32mAPI:\u001b[0m \u001b[1;32m{latency}ms\u001b[0m \u001b[1;34m| WS:\u001b[0m \u001b[1;34m{ws_latency}ms\u001b[0m```",
+            ephemeral=True
         )
 
     @button(label="Reload Cogs", style=ButtonStyle.secondary, custom_id="admin_reload", emoji="🔄")
