@@ -1,16 +1,16 @@
 
-from discord import Interaction, User, Embed, ButtonStyle
+from discord import Interaction, User, Embed, ButtonStyle, SelectOption
 from discord.ext import commands
-from discord.ui import View, button, Button
+from discord.ui import View, button, Button, Select
 import aiosqlite
 from config import DB_FILE
 from datetime import datetime
-from views.modal.modals import WatchCreateModal, WatchAddModal
+from views.modal.modals import WatchCreateModal, WatchAddModal, AddUrlModal
 from views.selectmenu.select_menus import WatchSelect, ShareSelect
 
 class WatchView(View):
     def __init__(self, bot: commands.Bot, author: User):
-        super().__init__(timeout=60)
+        super().__init__(timeout=120)
         self.bot = bot
         self.author = author
 
@@ -20,17 +20,17 @@ class WatchView(View):
             return False
         return True
 
-    @button(label="Create", style=ButtonStyle.secondary, custom_id="watch_create", emoji="➕")
+    @button(label="Create", style=ButtonStyle.secondary, custom_id="watch_create", emoji="🆕")
     async def create_btn(self, interaction: Interaction, button: Button):
         modal = WatchCreateModal(self.bot)
         await interaction.response.send_modal(modal)
 
-    @button(label="Add", style=ButtonStyle.secondary, custom_id="watch_add", emoji="🔗")
+    @button(label="Link", style=ButtonStyle.secondary, custom_id="watch_add", emoji="🔗")
     async def add_btn(self, interaction: Interaction, button: Button):
         modal = WatchAddModal(self.bot)
         await interaction.response.send_modal(modal)
 
-    @button(label="List", style=ButtonStyle.secondary, custom_id="watch_list", emoji="📜")
+    @button(label="List", style=ButtonStyle.secondary, custom_id="watch_list", emoji="📋")
     async def list_btn(self, interaction: Interaction, button: Button):
         user_id = str(interaction.user.id)
         async with aiosqlite.connect(DB_FILE) as db:
@@ -61,7 +61,7 @@ class WatchView(View):
         embed.set_footer(text=f"Total rooms: {len(rows)}")
         await interaction.response.send_message(embed=embed, ephemeral=True)
 
-    @button(label="Share", style=ButtonStyle.secondary, custom_id="watch_share", emoji="📤")
+    @button(label="Share", style=ButtonStyle.secondary, custom_id="watch_share", emoji="👤")
     async def share_btn(self, interaction: Interaction, button: Button):
         user_id = str(interaction.user.id)
         async with aiosqlite.connect(DB_FILE) as db:
@@ -83,7 +83,7 @@ class WatchView(View):
             ephemeral=True
         )
 
-    @button(label="Delete", style=ButtonStyle.secondary, custom_id="watch_delete", emoji="🗑️")
+    @button(label="Delete", style=ButtonStyle.danger, custom_id="watch_delete", emoji="🗑️")
     async def delete_btn(self, interaction: Interaction, button: Button):
         user_id = str(interaction.user.id)
         async with aiosqlite.connect(DB_FILE) as db:
@@ -104,3 +104,45 @@ class WatchView(View):
             view=view,
             ephemeral=True
         )
+        
+    @button(label="Add To Playlist", style=ButtonStyle.secondary, custom_id="watch_add_to_playlist", emoji="➕")
+    async def add_to_playlist_btn(self, interaction: Interaction, button: Button):
+        await self.show_room_select(interaction, mode="playlist")
+
+    @button(label="Insta Play", style=ButtonStyle.secondary, custom_id="watch_insta_play", emoji="▶️")
+    async def insta_play_btn(self, interaction: Interaction, button: Button):
+        await self.show_room_select(interaction, mode="insta_play")
+
+    async def show_room_select(self, interaction: Interaction, mode: str):
+        user_id = str(interaction.user.id)
+        async with aiosqlite.connect(DB_FILE) as db:
+            cursor = await db.execute(
+                "SELECT id, room_url, streamkey FROM rooms WHERE user_id = ? AND is_deleted = 0 ORDER BY created_at DESC",
+                (user_id,)
+            )
+            rooms = await cursor.fetchall()
+
+        if not rooms:
+            return await interaction.response.send_message("You have no active rooms.", ephemeral=True)
+
+        options = [
+            SelectOption(
+                label=f"Room ID {r[0]}",
+                description=r[1],
+                value=r[2]  # streamkey as value
+            ) for r in rooms
+        ]
+
+        class RoomSelect(Select):
+            def __init__(self, options, mode):
+                super().__init__(placeholder="Select a room", min_values=1, max_values=1, options=options)
+                self.mode = mode
+
+            async def callback(self, interaction: Interaction):
+                streamkey = self.values[0]
+                modal = AddUrlModal(self.mode, streamkey)
+                await interaction.response.send_modal(modal)
+
+        view = View()
+        view.add_item(RoomSelect(options, mode))
+        await interaction.response.send_message(f"Select a room for {mode.replace('_', ' ')}:", view=view, ephemeral=True)

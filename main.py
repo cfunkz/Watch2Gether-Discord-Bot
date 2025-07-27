@@ -29,8 +29,12 @@ async def on_ready():
 # === Setup Hook runs once for Database and Extensions ===
 @bot.event
 async def setup_hook():
+    logger.info("Setting up the bot...")
+    # Initialize the database
     await init_db()
+    logger.info("Database initialized.")
     await load_extensions()
+    logger.info("Extensions loaded.")
 
 async def load_extensions():
     await bot.load_extension("cogs.watch")

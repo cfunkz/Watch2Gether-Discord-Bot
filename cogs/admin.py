@@ -54,7 +54,7 @@ class AdminView(ui.View):
 class AdminCog(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
-        self.db_path = DB_FILE
+
 
     @app_commands.command(name="admin", description="Admin Panel")
     @app_commands.checks.has_role(ROLE_ID)

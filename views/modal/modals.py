@@ -197,3 +197,63 @@ class WatchCreateModal(Modal, title="Create Watch2Gether Room"):
         embed.set_footer(text="Saved to your list.")
         embed.set_thumbnail(url=interaction.user.display_avatar.replace(format='png').url)
         await interaction.response.send_message(embed=embed, ephemeral=True)
+        
+        
+class AddUrlModal(Modal, title="Add URL to Watch2Gether Room"):
+    url = TextInput(
+        label="Video URL (YouTube, Twitch, etc.)",
+        placeholder="https://www.youtube.com/watch?v=...",
+        required=True,
+        max_length=200
+    )
+
+    def __init__(self, mode: str, streamkey: str):
+        super().__init__()
+        self.mode = mode  # "playlist" or "insta_play"
+        self.streamkey = streamkey
+
+    async def on_submit(self, interaction: Interaction):
+        url = self.url.value.strip()
+        # Simple regex check for supported URLs (expand as needed)
+        patterns = [
+            r'https?://(www\.)?youtube\.com/watch\?v=[\w-]+',
+            r'https?://youtu\.be/[\w-]+',
+            r'https?://(www\.)?twitch\.tv/[\w-]+',
+            # add more supported regexes here...
+        ]
+        if not any(re.match(pattern, url) for pattern in patterns):
+            await interaction.response.send_message("URL is not supported or invalid.", ephemeral=True)
+            return
+
+        api_key = W2G_API_KEY
+        headers = {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+        }
+
+        async with aiohttp.ClientSession() as session:
+            if self.mode == "playlist":
+                # Add to playlist API call
+                api_url = f"https://api.w2g.tv/rooms/{self.streamkey}/playlists/current/playlist_items/sync_update"
+                payload = {
+                    "w2g_api_key": api_key,
+                    "add_items": [{"url": url, "title": "Added via Bot"}]
+                }
+            else:
+                # Insta play API call
+                api_url = f"https://api.w2g.tv/rooms/{self.streamkey}/sync_update"
+                payload = {
+                    "w2g_api_key": api_key,
+                    "item_url": url
+                }
+
+            try:
+                async with session.post(api_url, json=payload, headers=headers) as resp:
+                    if resp.status == 200:
+                        action = "added to playlist" if self.mode == "playlist" else "playing now"
+                        await interaction.response.send_message(f"Successfully {action} in the room!", ephemeral=True)
+                    else:
+                        text = await resp.text()
+                        await interaction.response.send_message(f"API error: {resp.status} {text}", ephemeral=True)
+            except Exception as e:
+                await interaction.response.send_message(f"Failed to contact Watch2Gether API: {e}", ephemeral=True)
