@@ -1,0 +1,33 @@
+# Bytecode files
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Virtual environment
+venv/
+env/
+ENV/
+.venv/
+
+# IDE settings
+.vscode/
+.idea/
+
+# System files
+.DS_Store
+Thumbs.db
+
+# SQLite DB
+*.db
+
+# Configs / API keys
+#config.py
+*.env
+
+# Logs
+*.log
+
+# PyInstaller
+dist/
+build/
+*.spec
