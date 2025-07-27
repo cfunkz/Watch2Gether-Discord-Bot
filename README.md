@@ -32,6 +32,14 @@
 - Custom logger
   
 # Setup
+
+**API KEY:** Get your Watch2Gether API key from your account page:  
+[https://w2g.tv/en/account/edit_user/](https://w2g.tv/en/account/edit_user/)
+
+**Discord Bot Token:** Create a bot on the Discord Developer Portal:  
+[https://discord.com/developers/applications](https://discord.com/developers/app
+lications)
+
 ```bash
 git clone https://github.com/cfunkz/Watch2Gether-Discord-Bot.git
 cd Watch2Gether-Discord-Bot
