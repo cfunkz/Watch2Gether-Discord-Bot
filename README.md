@@ -24,7 +24,9 @@
 - Link existing Watch2Gether rooms.
 - Validate and verify Watch2Gether URLs using **regular expressions (regex)**.
 - Manage multiple rooms per user with limits.
-- Download database and reload bot cogs via admin panel.
+- Add videos to playlist.
+- Instant play a video.
+- Download local database and reload bot cogs via admin panel.
 - Uses **aiohttp** for asynchronous HTTP requests.
 - Uses **aiosqlite** for asynchronous database operations, enabling concurrency.
 - Employs Discord **modals**, **select menus**, and **options** for interactive user input and command handling.
@@ -47,7 +49,7 @@ cd Watch2Gether-Discord-Bot
 Create and activate a Python virtual environment
 
 ```bash
-python -m venv .venv
+python3 -m venv .venv
 source .venv/bin/activate  # Linux/macOS
 .\.venv\Scripts\activate   # Windows PowerShell
 ```

@@ -135,7 +135,7 @@ class WatchView(View):
 
         class RoomSelect(Select):
             def __init__(self, options, mode):
-                super().__init__(placeholder="```Select a room```", min_values=1, max_values=1, options=options)
+                super().__init__(placeholder="Select a room", min_values=1, max_values=1, options=options)
                 self.mode = mode
 
             async def callback(self, interaction: Interaction):
