@@ -14,9 +14,6 @@
   <a href="https://github.com/cfunkz/Watch2Gether-Discord-Bot/issues">
     <img src="https://img.shields.io/github/issues/cfunkz/Watch2Gether-Discord-Bot" alt="GitHub issues" />
   </a>
-  <a href="https://github.com/cfunkz/Watch2Gether-Discord-Bot/actions">
-    <img src="https://img.shields.io/github/workflow/status/cfunkz/Watch2Gether-Discord-Bot/CI" alt="Build Status" />
-  </a>
 </p>
 
 ## 📚 Table of Contents
