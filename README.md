@@ -128,3 +128,14 @@ The bot can create a temporary room, link existing rooms, share, delete rooms, a
     <td><img src="https://github.com/user-attachments/assets/b92ef5b0-6928-492d-b76f-65ee91d22fbb" alt="Logger" width="300"></td>
   </tr>
 </table>
+
+## 👤 About the Developer
+
+Built with ❤️ by [cfunkz](https://github.com/cfunkz) — learning the wizardry of Debian, Python & SQL.  
+If this project helped you, consider ⭐ starring the repo or [buying me a coffee](https://ko-fi.com/cfunkz)!
+
+<p align="center">
+  <a href="https://ko-fi.com/YOURNAME">
+    <img src="https://ko-fi.com/img/githubbutton_sm.svg" alt="ko-fi">
+  </a>
+</p>
