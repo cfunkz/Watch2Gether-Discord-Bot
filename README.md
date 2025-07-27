@@ -34,11 +34,10 @@
 # Setup
 
 **API KEY:** Get your Watch2Gether API key from your account page:  
-[https://w2g.tv/en/account/edit_user/](https://w2g.tv/en/account/edit_user/)
+[https://w2g.tv/en/account/edit_user/](W2G Profile Page)
 
 **Discord Bot Token:** Create a bot on the Discord Developer Portal:  
-[https://discord.com/developers/applications](https://discord.com/developers/app
-lications)
+[https://discord.com/developers/applications](DISCORD API)
 
 ```bash
 git clone https://github.com/cfunkz/Watch2Gether-Discord-Bot.git
