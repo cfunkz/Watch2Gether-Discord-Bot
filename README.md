@@ -83,10 +83,6 @@ Run the bot
 python main.py
 ```
 
-# Functions
-
-Coming Soon
-
 # Usage
 
 ## Admin Panel
@@ -102,7 +98,7 @@ Use the `/watch` command to manage Watch2Gether rooms.
 # Images
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/69e3347b-f877-46f9-9cf7-f132584882dd" alt="Main" width="700" />
+  <img src="https://i.ibb.co/XfDqv714/image.png" alt="Main" width="700" />
 </p>
 
 <table align="center">
@@ -117,10 +113,6 @@ Use the `/watch` command to manage Watch2Gether rooms.
   <tr>
     <td><img src="https://github.com/user-attachments/assets/c66de142-295c-4500-af0a-84441dda6f7c" alt="Delete Rooms" width="300"></td>
     <td><img src="https://github.com/user-attachments/assets/f51e660d-f403-4c30-bfed-6584a7221a86" alt="Admin Panel" width="300"></td>
-  </tr>
-  <tr>
-    <td><img src="https://github.com/user-attachments/assets/1920c5db-f26a-41d6-b988-53fe8e4de4d4" alt="Add To Playlist" width="300"></td>
-    <td><img src="https://github.com/user-attachments/assets/80e49491-4120-4c2b-b19d-e4778426b1f2" alt="Instant Play" width="300"></td>
   </tr>
   <tr>
     <td><img src="https://github.com/user-attachments/assets/b92ef5b0-6928-492d-b76f-65ee91d22fbb" alt="Logger" width="300"></td>
