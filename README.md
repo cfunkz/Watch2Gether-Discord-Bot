@@ -102,7 +102,7 @@ Use the `/watch` command to manage Watch2Gether rooms.
 # Images
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/094102d2-3c7b-4205-84f9-4748c47131e9" alt="Main" width="700" />
+  <img src="https://github.com/user-attachments/assets/69e3347b-f877-46f9-9cf7-f132584882dd" alt="Main" width="700" />
 </p>
 
 <table align="center">
