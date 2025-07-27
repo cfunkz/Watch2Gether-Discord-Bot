@@ -97,7 +97,7 @@ python main.py
 ## Admin Panel
 Run `/admin` to open a private panel with buttons for:
 
-- Downloading the database
+- Downloading or dumping the database
 - Checking ping
 - Reloading cogs
 
