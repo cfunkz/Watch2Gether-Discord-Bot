@@ -57,7 +57,6 @@ class AdminCog(commands.Cog):
         self.db_path = DB_FILE
 
     @app_commands.command(name="admin", description="Admin Panel")
-    @app_commands.guilds(Object(id=GUILD_ID))
     @app_commands.checks.has_role(ROLE_ID)
     async def admin(self, interaction: Interaction):
         ansi_block = (

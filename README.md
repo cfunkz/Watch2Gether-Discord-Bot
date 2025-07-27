@@ -1,20 +1,97 @@
+
+# Watch2Gether Discord Bot Documentation
+
 # Features
 - Create new temporary rooms via Watch2Gether.
 - Link existing Watch2Gether rooms.
-- Validate and verify Watch2Gether URLs.
+- Validate and verify Watch2Gether URLs using **regular expressions (regex)**.
 - Manage multiple rooms per user with limits.
 - Download database and reload bot cogs via admin panel.
+- Uses **aiohttp** for asynchronous HTTP requests.
+- Uses **aiosqlite** for asynchronous database operations, enabling concurrency.
+- Employs Discord **modals**, **select menus**, and **options** for interactive user input and command handling.
 - Simple Admin Panel for database management and reloading cogs.
-
+- Custom logger
+  
 # Setup
-`git clone https://github.com/cfunkz/Watch2Gether-Discord-Bot.git`
-`cd Watch2Gether-Discord-Bot`
+```bash
+git clone https://github.com/cfunkz/Watch2Gether-Discord-Bot.git
+cd Watch2Gether-Discord-Bot
+```
+
+Create and activate a Python virtual environment
+
+```bash
+python -m venv .venv
+source .venv/bin/activate  # Linux/macOS
+.\.venv\Scripts\activate   # Windows PowerShell
+```
+
+Install dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+Configure your environment
+
+Edit `config.py` with:
+
+```python
+W2G_API_KEY = "WATCH2GETHER KEY"
+BOT_TOKEN = "DISCORD TOKEN"
+DB_FILE = "user_rooms.db" # Database file path
+GUILD_ID = 1234567890000000001  # Your server ID
+ROLE_ID = 1234567898098766554   # Admin Role ID that should have access
+MAX_LOG_SIZE = 33554432  # Maximum LOG SIZE in bytes (32 MB)
+ROTATE_LOGS = 5  # HOW MANY LOGS TO ROTATE
+LOG_FILE = 'discord.log'
+DEFAULT_AVATAR = "https://i.ibb.co/TMnHDzL2/watchparty.png"  # Default avatar URL
+```
+
+Run the bot
+
+```bash
+python bot.py
+```
+
+# Functions
+
+Coming Soon
+
+# Usage
+
+## Admin Panel
+Run `/admin` to open a private panel with buttons for:
+
+- Downloading the database
+- Checking ping
+- Reloading cogs
+
+## Manage Rooms
+Use the `/watch` command to manage Watch2Gether rooms.
 
 # Images
 
-<img width="1028" height="386" alt="image" src="https://github.com/user-attachments/assets/094102d2-3c7b-4205-84f9-4748c47131e9" />
-<img width="594" height="635" alt="image" src="https://github.com/user-attachments/assets/2970cc5d-ce0c-45e9-adaa-7c4ef7c31a22" />
-<img width="595" height="404" alt="image" src="https://github.com/user-attachments/assets/c790ec02-1804-4511-a99a-7537f998b511" />
-<img width="1018" height="338" alt="image" src="https://github.com/user-attachments/assets/16ca142b-7bd2-4b71-9875-2e7b703f9e2a" />
-<img width="1033" height="489" alt="image" src="https://github.com/user-attachments/assets/c00c9fdf-ec81-4dcc-921a-90d919eaa0de" />
-<img width="1031" height="304" alt="image" src="https://github.com/user-attachments/assets/c66de142-295c-4500-af0a-84441dda6f7c" />
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/094102d2-3c7b-4205-84f9-4748c47131e9" alt="Main" width="700" />
+</p>
+
+<table align="center">
+  <tr>
+    <td><img src="https://github.com/user-attachments/assets/2970cc5d-ce0c-45e9-adaa-7c4ef7c31a22" alt="Create" width="300"></td>
+    <td><img src="https://github.com/user-attachments/assets/c790ec02-1804-4511-a99a-7537f998b511" alt="Add" width="300"></td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/user-attachments/assets/16ca142b-7bd2-4b71-9875-2e7b703f9e2a" alt="Room List" width="300"></td>
+    <td><img src="https://github.com/user-attachments/assets/c00c9fdf-ec81-4dcc-921a-90d919eaa0de" alt="Share Invite" width="300"></td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/user-attachments/assets/c66de142-295c-4500-af0a-84441dda6f7c" alt="Delete Rooms" width="300"></td>
+    <td><img src="https://github.com/user-attachments/assets/f51e660d-f403-4c30-bfed-6584a7221a86" alt="Admin Panel" width="300"></td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/user-attachments/assets/b92ef5b0-6928-492d-b76f-65ee91d22fbb" alt="Logger" width="300"></td>
+  </tr>
+</table>
+

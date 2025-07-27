@@ -4,7 +4,7 @@ from discord.ext import commands
 import aiohttp
 import aiosqlite
 import re
-from config import DB_FILE, W2G_API_KEY
+from config import DB_FILE, W2G_API_KEY, MAX_USER_ROOM
 from urllib.parse import urlparse
 
 
@@ -62,9 +62,9 @@ class WatchAddModal(Modal, title="Add Existing Watch2Gether Room"):
                 (user_id,)
             )
             count = await cursor.fetchone()
-            if count is not None and count[0] >= 10:
+            if count is not None and count[0] >= MAX_USER_ROOM:
                 await interaction.response.send_message(
-                    "You have reached the maximum of 10 active rooms. Delete one first.", ephemeral=True
+                    f"You have reached the maximum of {MAX_USER_ROOM} active rooms. Delete one first.", ephemeral=True
                 )
                 return
 
@@ -127,9 +127,9 @@ class WatchCreateModal(Modal, title="Create Watch2Gether Room"):
                 (user_id,)
             )
             count = await cursor.fetchone()
-            if count is not None and count[0] >= 10:
+            if count is not None and count[0] >= MAX_USER_ROOM:
                 await interaction.response.send_message(
-                    "You have reached the maximum of 10 active rooms. Delete one first.", ephemeral=True
+                    f"You have reached the maximum of {MAX_USER_ROOM} active rooms. Delete one first.", ephemeral=True
                 )
                 return
 
