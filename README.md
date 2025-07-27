@@ -103,6 +103,7 @@ Run `/admin` to open a private panel with buttons for:
 
 ## Manage Rooms
 Use the `/watch` command to manage Watch2Gether rooms.
+The bot can create a temporary room, link existing rooms, share, delete rooms, add to playlist and instant play a video from discord.
 
 # Images
 
