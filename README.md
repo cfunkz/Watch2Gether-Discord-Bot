@@ -26,7 +26,7 @@
 - Manage multiple rooms per user with limits.
 - Add videos to playlist.
 - Instant play a video.
-- Download local database and reload bot cogs via admin panel.
+- Download & Dump local database and reload bot cogs via admin panel.
 - Uses **aiohttp** for asynchronous HTTP requests.
 - Uses **aiosqlite** for asynchronous database operations, enabling concurrency.
 - Employs Discord **modals**, **select menus**, and **options** for interactive user input and command handling.
@@ -112,7 +112,7 @@ Use the `/watch` command to manage Watch2Gether rooms.
   </tr>
   <tr>
     <td><img src="https://github.com/user-attachments/assets/c66de142-295c-4500-af0a-84441dda6f7c" alt="Delete Rooms" width="300"></td>
-    <td><img src="https://github.com/user-attachments/assets/f51e660d-f403-4c30-bfed-6584a7221a86" alt="Admin Panel" width="300"></td>
+    <td><img src="https://i.ibb.co/8Z4GBfy/image.png" alt="Admin Panel" width="300"></td>
   </tr>
   <tr>
     <td><img src="https://github.com/user-attachments/assets/b92ef5b0-6928-492d-b76f-65ee91d22fbb" alt="Logger" width="300"></td>
