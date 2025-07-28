@@ -90,7 +90,7 @@ Run the bot
 python main.py
 ```
 
-> ⚠️ **Note**: Ensure you have the required permissions for the bot in your Discord server. Don't forget to set admin role and guild.
+> ⚠️ **Note**: Ensure you have the required permissions for the bot in your Discord server. Don't forget to set admin role and guild in the `.env` or `config.py`.
 
 # Usage
 
