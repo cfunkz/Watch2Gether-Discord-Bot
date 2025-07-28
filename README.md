@@ -90,7 +90,7 @@ Run the bot
 python main.py
 ```
 
-> ⚠️ **Note**: Ensure you have the required permissions for the bot in your Discord server. Don't forget to set admin role and guild. I have not tested this on docker, but should run if you work around the sqlite database.
+> ⚠️ **Note**: Ensure you have the required permissions for the bot in your Discord server. Don't forget to set admin role and guild.
 
 # Usage
 
