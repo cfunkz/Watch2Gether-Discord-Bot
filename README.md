@@ -127,7 +127,7 @@ The bot can create a temporary room, link existing rooms, share, delete rooms, a
   </tr>
 </table>
 
-# About the Developer
+## About the Developer
 
 Built with ❤️ by [cfunkz](https://github.com/cfunkz) — learning the wizardry of Debian, Python & SQL.  
 If this project helped you, consider ⭐ starring the repo or [buying me a coffee](https://ko-fi.com/cfunkz)!
