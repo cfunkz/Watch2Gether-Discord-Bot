@@ -24,7 +24,7 @@ async def on_ready():
         synced = await bot.tree.sync()
         logger.info(f"Synced {len(synced)} slash command(s).")
     except Exception as e:
-        logger.error(f"Failed to sync commands: {e}")
+        logger.exception(f"Failed to sync commands: {e}")
 
 # === Setup Hook runs once for Database and Extensions ===
 @bot.event
@@ -39,6 +39,7 @@ async def setup_hook():
 async def load_extensions():
     await bot.load_extension("cogs.watch")
     await bot.load_extension("cogs.admin")
+    await bot.load_extension("cogs.cleaner")
 
 # === Main entry ===
 if __name__ == "__main__":
