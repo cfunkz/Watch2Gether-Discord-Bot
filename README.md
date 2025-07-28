@@ -24,6 +24,7 @@
   - [Admin Panel](#admin-panel)
   - [Manage Rooms](#manage-rooms)
 - [Images](#images)
+- [About the Developer](#about-the-developer)
 
 # Features
 - Create new temporary rooms via Watch2Gether.
